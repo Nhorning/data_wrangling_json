@@ -1,1 +1,30 @@
-Placeholder Readme for later
+
+JSON exercise
+
+Using data in file 'data/world_bank_projects.json' and the techniques demonstrated above,
+
+1.    Find the 10 countries with most projects
+2.    Find the top 10 major project themes (using column 'mjtheme_namecode')
+3.    In 2. above you will notice that some entries have only the code and the name is missing. Create a dataframe with the missing names filled in.
+---
+
+To complete the exercises I explored multiple approaches, and then cut out unnecessary steps for clarity.  I chose to leave steps in that make subsequent decisions possible, after gaining insights into the dataset. 
+
+Exercise 1: 
+
+• load json data into a list of dicts, 
+• iterate over it to print out the keys and values.
+• load the json data into a data frame 'wb_projects' using the json_normalize function and print out the head. 
+• group the dataframe by 'countryshortname', counting up the unique project ids per country
+• produce a top 10 dataframe 'top10df' by sorting by the no. of projects and slicing the first 10 projects out. 
+• print and plot the data frame
+
+Exercise 2 and 3:
+
+I found it easier to do exercise 3 first. 
+• In order to "use the techniques demonstrated above," read the json data into a pandas data frame
+• slice out a list of relevant columns.
+• Turn the 'mjtheme_namecode' column itself into a list of dictionaries 'themelist', using the tolist() method, and print out the first 10 to take a look
+• Create a new pandas data frame 'themedf', and populated it by looping through 'themelist' and aggregating theme names and their project counts by their code numbers in the index.
+• This should satisfy "create a dataframe with the missing names filled in" for exercise 3. 
+• To find the top 10 Major project themes from there, simply sort the data frame by project count, slice out the top 10 into a new dataframe 'top10thmesdf', print, and plot. 
